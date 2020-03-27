@@ -6,11 +6,16 @@ import {
   FormGroup
 } from 'react-bootstrap';
 
+import { useAuthContext } from '../context/AuthContext';
+
 const Login = () => {
-  const [formData, setFormData] = useState({
+  const { logIn } = useAuthContext();
+  const INITIAL_STATE = {
     email: '',
     password: ''
-  });
+  };
+
+  const [formData, setFormData] = useState(INITIAL_STATE);
 
   const { email, password } = formData;
 
@@ -18,7 +23,15 @@ const Login = () => {
 
   const handleChange = ({ target: { id, value } }) => setFormData({ ...formData, [id]: value });
 
-  const handleSubmit = e => e.preventDefault();
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    try {
+      await logIn(email, password);
+    } catch (e) {
+      alert(e.message);
+    }
+  };
 
   return (
     <div className="Login">

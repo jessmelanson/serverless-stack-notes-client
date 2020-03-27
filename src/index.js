@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+
 import Amplify from 'aws-amplify';
 
 import config from './config';
 import './index.css';
+import { AuthProvider } from './context/AuthContext';
 import App from './App';
 
 Amplify.configure({
@@ -35,8 +36,8 @@ Amplify.configure({
 });
 
 ReactDOM.render(
-  <Router>
+  <AuthProvider>
     <App />
-  </Router>,
+  </AuthProvider>,
   document.getElementById('root')
 );
