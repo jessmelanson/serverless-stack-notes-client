@@ -8,7 +8,7 @@ import {
 
 import { useAuthContext } from '../context/AuthContext';
 
-const Login = () => {
+const Login = ({ history }) => {
   const { logIn } = useAuthContext();
   const INITIAL_STATE = {
     email: '',
@@ -28,6 +28,7 @@ const Login = () => {
 
     try {
       await logIn(email, password);
+      history.push('/');
     } catch (e) {
       alert(e.message);
     }

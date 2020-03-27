@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 
 import './App.css';
 import NavLinks from './containers/NavLinks';
@@ -25,12 +24,10 @@ const App = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <Router>
-      <div className="App container">
-        <NavLinks />
-        <Routes />
-      </div>
-    </Router>
+    <div className="App container">
+      <NavLinks />
+      <Routes />
+    </div>
   );
 };
 

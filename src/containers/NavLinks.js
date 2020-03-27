@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   Nav,
   Navbar,
@@ -11,10 +11,12 @@ import { useAuthContext } from '../context/AuthContext';
 
 const NavLinks = () => {
   const { isAuthenticated, logOut } = useAuthContext();
+  const history = useHistory();
 
   const handleLogOut = async () => {
     try {
       await logOut();
+      history.push('/login');
     } catch (e) {
       alert(e.message);
     }
