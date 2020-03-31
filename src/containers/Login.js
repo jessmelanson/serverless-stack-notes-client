@@ -10,18 +10,14 @@ import { useAuthContext } from '../context/AuthContext';
 
 const Login = ({ history }) => {
   const { logIn } = useAuthContext();
-  const INITIAL_STATE = {
+  const [fields, handleChange] = useFormFields({
     email: '',
     password: ''
-  };
+  });
 
-  const [formData, setFormData] = useState(INITIAL_STATE);
-
-  const { email, password } = formData;
+  const { email, password } = fields;
 
   const validateForm = () => email.length > 0 && password.length > 0;
-
-  const handleChange = ({ target: { id, value } }) => setFormData({ ...formData, [id]: value });
 
   const handleSubmit = async e => {
     e.preventDefault();
