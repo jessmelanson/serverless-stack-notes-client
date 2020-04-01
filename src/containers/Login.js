@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Button,
   ControlLabel,
@@ -7,6 +7,7 @@ import {
 } from 'react-bootstrap';
 
 import { useAuthContext } from '../context/AuthContext';
+import { useFormFields } from '../lib/hooks';
 
 const Login = ({ history }) => {
   const { logIn } = useAuthContext();
